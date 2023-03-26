@@ -4,8 +4,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import OTPRequest
-from .serializers import RequestOTPSerializer, RequestOTPResponseSerializer, VerifyOtpRequestSerializer, \
-    ObtainTokenSerializer
+from .serializers import RequestOTPSerializer, RequestOTPResponseSerializer, VerifyOtpRequestSerializer, ObtainTokenSerializer
 
 
 class OTPView(APIView):
