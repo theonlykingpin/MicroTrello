@@ -8,6 +8,7 @@ from .serializers import RequestOTPSerializer, RequestOTPResponseSerializer, Ver
 
 
 class OTPView(APIView):
+    
 
     def get(self, request, *args, **kwargs):
         serializer = RequestOTPSerializer(data=request.query_params)
@@ -21,6 +22,7 @@ class OTPView(APIView):
                 return Response(data=str(e), status=HTTP_400_BAD_REQUEST)
         else:
             return Response(data=serializer.errors, status=HTTP_400_BAD_REQUEST)
+        
 
     def post(self, request, *args, **kwargs):
         serializer = VerifyOtpRequestSerializer(data=request.data)
@@ -32,8 +34,8 @@ class OTPView(APIView):
                 return Response(data='Your credentials is incorrect.', status=HTTP_401_UNAUTHORIZED)
         else:
             return Response(data=serializer.errors, status=HTTP_400_BAD_REQUEST)
-
-    @staticmethod
+        
+        
     def _handle_login(data):
         current_user = get_user_model()
         user, created = current_user.objects.get_or_create(username=data['receiver'])
